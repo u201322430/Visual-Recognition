@@ -84,7 +84,7 @@ public class MarcoTexto extends JFrame{
                 else{
                     if(x.contains("score:")){//si es un score
                         score.add(x);
-                        resul = resul + x + "\n";
+                        resul = resul + x + "\n\n";
                     }
                 }
             }
@@ -137,12 +137,9 @@ public class MarcoTexto extends JFrame{
     }
     public static class LaminaResultado extends JPanel {
         public LaminaResultado() {
-            JTextArea lbResul = new JTextArea(Variables.resul);
+            JTextArea lbResul = new JTextArea(Variables.resulFinal);
             add(lbResul);
-            campo4 = new JTextField(Variables.resul);
-            add(campo4);
         }
-        private JTextField campo4;
     }
 }
 
