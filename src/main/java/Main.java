@@ -5,6 +5,7 @@ import com.ibm.watson.visual_recognition.v3.model.ClassifiedImages;
 import com.ibm.watson.visual_recognition.v3.model.ClassifyOptions;
 
 import graficos.MarcoTexto.LaminaTexto;
+import graficos.MarcoTexto.LaminaResultado;
 import graficos.MarcoTexto;
 import graficos.Variables;
 
@@ -33,6 +34,16 @@ public class Main {
                 ClassifiedImages resultado = visualRecognition.classify(classifyOptions).execute().getResult();
                 System.out.println(resultado);
                 Variables.iniciar = false;
+
+                //mostrar el resultadoen marco3
+                Variables.resul = resultado.toString();
+                System.out.println("Variable.resul = resultado");
+
+                MarcoTexto marco3 = new MarcoTexto();
+                marco3.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+                LaminaResultado miLamina3 = new LaminaResultado();
+                marco3.add(miLamina3);
+                marco3.setVisible(true);
             }
             Thread.sleep(1000);
         }

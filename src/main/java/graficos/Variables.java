@@ -9,4 +9,6 @@ public class Variables{
     public static boolean bucle = true;
     public static Image imagen = null;
     public static boolean imagenValida = false;
+    public static String resul;
+    public static String resulFinal;
 }

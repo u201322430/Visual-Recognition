@@ -4,8 +4,11 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.text.JTextComponent;
 
 public class MarcoTexto extends JFrame{
     public MarcoTexto(){
@@ -38,13 +41,56 @@ public class MarcoTexto extends JFrame{
 
 
 
-            JButton miBoton = new JButton("Ejecutar");//se crea el boton
+            JButton btnEjecutar = new JButton("Ejecutar");//se crea el boton
             DameTexto miEvento = new DameTexto();//crea evento
-            miBoton.addActionListener(miEvento);//boton ejecuta evento
-            add(miBoton);//muestra el boton
+            btnEjecutar.addActionListener(miEvento);//boton ejecuta evento
+            add(btnEjecutar);//muestra el boton
 
         }
+        /*static int numeroLineas(String resul){
+            int numLineas = 0;
 
+
+
+            for (String elemento: array)
+                System.out.println(elemento);
+
+            while(resul.has){
+                resul.nextLine();
+                numLineas++;
+            }
+
+
+            return numLineas;
+        }*/
+        static String darResulLimpio(String resul){
+            System.out.println("AQUÍ");
+            System.out.println(resul);
+            String resulF = "";
+            resul = resul.replaceAll("\"", "");//sin "
+            resul = resul.replaceAll("              ", "");
+            String linea[] = resul.split("\n");//cada linea
+
+            List<String> clase = new ArrayList<String>();
+            List<String> score = new ArrayList<String>();
+            String[] palabra;
+            int nLin = linea.length;
+
+            for (String x: linea){//x será cada linea
+                if(x.contains("class:")){//si es una clase
+                    clase.add(x);
+                    resul = resul + x + "\n";
+                }
+                else{
+                    if(x.contains("score:")){//si es un score
+                        score.add(x);
+                        resul = resul + x + "\n";
+                    }
+                }
+            }
+            System.out.println("SALIÓ DE darResultadoLimpio");
+            return resulF;
+        }
         private class DameTexto implements ActionListener{
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -54,6 +100,10 @@ public class MarcoTexto extends JFrame{
                 Variables.apikey = campo1.getText();
                 Variables.serviceURL = campo2.getText();
                 Variables.imageURL = campo3.getText();
+                System.out.println("Soy evento clic y Variables.resul es:");
+                System.out.println(Variables.resul);
+                Variables.apikey = campo1.getText();
+                //Variables.resulFinal = darResulLimpio(Variables.resul);
                 Variables.iniciar = true;
             }
         }
@@ -66,7 +116,6 @@ public class MarcoTexto extends JFrame{
                     URL url = new URL(Variables.imageURL);
                     //Asignacion de url a la imagen
                     Variables.imagen = ImageIO.read(url);
-                    System.out.println("Paso 1");
                 } catch (IOException e2) {
                     e2.printStackTrace();
                 }
@@ -80,13 +129,20 @@ public class MarcoTexto extends JFrame{
                 marco2.add(imgLabel);
 
                 marco2.setVisible(true);
-
-                System.out.println("Paso 2");
             }
         }
         private JTextField campo1;
         private JTextField campo2;
         private JTextField campo3;
+    }
+    public static class LaminaResultado extends JPanel {
+        public LaminaResultado() {
+            JTextArea lbResul = new JTextArea(Variables.resul);
+            add(lbResul);
+            campo4 = new JTextField(Variables.resul);
+            add(campo4);
+        }
+        private JTextField campo4;
     }
 }
 
