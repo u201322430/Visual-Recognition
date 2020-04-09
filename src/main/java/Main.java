@@ -51,7 +51,7 @@ public class Main {
                 Variables.resulFinal = Variables.darResulLimpio(Variables.resul);
                 //
                 MarcoTexto marco3 = new MarcoTexto();
-                marco3.setBounds(600,300,200,500);
+                marco3.setBounds(200,100,250,600);
                 marco3.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
                 LaminaResultado miLamina3 = new LaminaResultado();
                 marco3.add(miLamina3);

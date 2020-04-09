@@ -12,7 +12,7 @@ import javax.swing.text.JTextComponent;
 
 public class MarcoTexto extends JFrame{
     public MarcoTexto(){
-        setBounds(600,300,600,350);
+        setBounds(700,200,600,350);
         //setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         //LaminaTexto miLamina1 = new LaminaTexto();
         //add(miLamina1);
@@ -63,7 +63,7 @@ public class MarcoTexto extends JFrame{
 
             return numLineas;
         }*/
-        static String darResulLimpio(String resul){
+        /*static String darResulLimpio(String resul){
             System.out.println("AQUÍ");
             System.out.println(resul);
             String resulF = "";
@@ -90,7 +90,7 @@ public class MarcoTexto extends JFrame{
             }
             System.out.println("SALIÓ DE darResultadoLimpio");
             return resulF;
-        }
+        }*/
         private class DameTexto implements ActionListener{
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -103,7 +103,7 @@ public class MarcoTexto extends JFrame{
                 System.out.println("Soy evento clic y Variables.resul es:");
                 System.out.println(Variables.resul);
                 Variables.apikey = campo1.getText();
-                //Variables.resulFinal = darResulLimpio(Variables.resul);
+                //Variables.resulFinal = Variables.darResulLimpio(Variables.resul);
                 Variables.iniciar = true;
             }
         }
